@@ -6,4 +6,4 @@ Follows:
 
 * [EAGER Run Setup](docs/setup.md)
 * [EAGER Debugging](docs/debugging.md)
-* [EAGER Output Interpretation](output_interpretation.md)
+* [EAGER Output Interpretation](docs/output_interpretation.md)
