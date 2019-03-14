@@ -1,2 +1,9 @@
-# eager1-tips-and-tricks
-EAGER1 Tips and Tricks
+# EAGER1 Tips and Tricks
+
+Tips and Tricks for using EAGER1 (https://github.com/apeltzer/eager)
+
+Follows:
+
+* EAGER Run Setup
+* EAGER Debugging
+* EAGER Output Interpretation
