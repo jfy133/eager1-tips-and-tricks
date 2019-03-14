@@ -1,10 +1,12 @@
 # Setting Up An EAGER Run
 
-This page presumes you are roughyl familiar what each step of a NGS pipeline does.
+This page presumes you are roughly familiar what each step of a NGS pipeline does.
 
-## Input Files Window (Select input *.fq/.fq.gz Files)
+## Before you start
 
-This menu is aimed at describing the nature of your input data. You should make sure you know what your input files are - in terms of number of FASTQ files per sample, and what naming format they are in.
+Make sure you know your how your libraries have been constructed (e.g. UDG treated, capture data?) and sequenced.
+
+## File Organisation
 
 All FASTQ files from the same sample should be in a sample specific directory. You should _not_ mix FASTQ files from different samples. You should also make sure all the file names are in the same format. This should follow the Illumina default of:
 
@@ -13,7 +15,15 @@ All FASTQ files from the same sample should be in a sample specific directory. Y
 ```
 The files should share the same `<SAMPLE_NAME>` and `_S<X>_` (where X represents a number). The lane information `_L00<X>_` and read pairing `_R<X>_` can have differnet numbers, but must be in the same order. 
 
-Changing options in this menu in _some_ cases switch to some default parameters downstream. 
+## Loading the EAGER GUI
+
+If you are running EAGER from a server, and logging in via `ssh` remember to log into that server with `ssh -X` or `ssh -Y`. This is required to open the GUI windows.
+
+## Input Files Window (Select input *.fq/.fq.gz Files)
+
+This menu is aimed at describing the nature of your input data. You should make sure you know what your input files are - in terms of number of FASTQ files per sample, and what naming format they are in.
+
+Changing options in this menu in _some_ cases switch in some default parameters downstream. 
 
 * **Organism Type** Human is default. Switching to Bacteria or Other (i.e. animals) will turn on reporting of 'quality filtering' statistics in ReportTable.
 * **Age of Dataset** To our knowledge, this doesn't make any changes.
