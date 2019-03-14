@@ -46,7 +46,7 @@ This is self explanatory.
 
 The input reference file must be uncompressed (not with `.gz` at the end) and end in `.fa` or `.fasta`. 
 
-**Name of mitochondiral chromosome** gives you the option to get mapping statistics of a particular _entry_ in a multi-header `<REFERENCE>.fasta` file, in addition to the whole reference. 
+**Name of mitochondrial chromosome** gives you the option to get mapping statistics of a particular _entry_ in a multi-header `<REFERENCE>.fasta` file, in addition to the whole reference. 
   * You can see this if you have multiple lines starting with `>` in your `<REFERENCE>.fasta` file. 
   * This does not specifically have to be the mitochondrial chromosome nor a chromosome at all, although all information in the ReportTable output will call it 'MT'. 
   * If you do not have HG19 or GrCH37 human reference fastas, you need to put the first word of the header (i.e. until the first space and without the `>`) in the field. The GI numbers that window information refers to are deprecated IDs from NCBI and may not be in your `<REFERENCE>.fasta` file. 
