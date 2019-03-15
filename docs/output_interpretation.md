@@ -12,11 +12,12 @@ We will go through each column of this table, describing what each one means and
 
 **# of Merged Reads** The number of reads that have been successfully merged. For single-end data, this field will be `0`. Data from: AdapterRemoval/ClipAndMerge.
 
-**# reads not attempted to map** Data from: AdapterRemoval/ClipAndMerge.
+**# reads not attempted to map** The reads that were not excluded prior to mapping. Most of these are reads smaller than 30bp, which cannot be confidetly mapped, and are therefore excluded. Also included are reads that have been filtered due to low base quality scores. Data from: AdapterRemoval/ClipAndMerge.
 
 **# mapped reads prior RMDup** The number of reads that mapped to the reference genome, before the removal of PCR duplicates. Data from: Samtools.
 
 **# of Duplicates removed** The number of PCR duplicates removed. A PCR duplicate is a read that matches another read with no mismatches. `MarkDuplicates` will compare reads that have the same starting position, and keep the longest read while discarding the rest. `DeDup` will take into account both starting and ending position of a read, and ony compare among perfectly identical reads. Data from: DeDup/MarkDuplicates.
+
 **Mapped Reads after RMDup** The number of reads remaining after the removal of PCR duplicates. This number will be equal to the number of mapped reads minus the number of duplicates. Data from: DeDup/MarkrDuplicates.
 
 **Endogenous DNA (%)** The percentage of reads after adapter removal that were successfully mapped to the reference genome. In other words, the ratio of `# mapped reads prior RMDup` to the `# reads after C&M prior mapping`. Data from: ReportTable.
