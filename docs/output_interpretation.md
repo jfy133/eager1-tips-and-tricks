@@ -57,8 +57,21 @@ This value is expected to be lower than "DMG 1nd Base 3'", and about equal to "D
 
 **average fragment length**  The mean fragment length of mapped reads. This value is expected to be low for ancient DNA (between 30-75bp, depending on the age and preservation of the material). Data from: MapDamage/Damageprofiler.
 
-**median fragment length**  The median fragment lenght of mapped reads. This value is expected to be low for ancient DNA (between 30-75bp, depending on the age and preservation of the material). Data from: MapDamage/Damageprofiler.
+**median fragment length**  The median fragment lenght of mapped reads. This value is expected to be low for ancient DNA (between 30-75bp, depending on the age and preservation of the material). Data from: MapDamage/DamageProfiler.
 
 **GC content in %** The GC content across all mapped reads. This value should be close to the GC proportion of your reference genome. When working with NextSeq single-end sequenced data, values significantly higher than expected may stem from poly-G tails. This is because the machine reads the lack of a light as a guanine incorporation, therefore adding a poly-G tail to short fragments. If you believe you suffer from this issue after looking into your fastq files, you can utilise a tool like `fastp` to correct your raw data. Data from Qualimap.
 
 ## Files
+### Introduction
+### 0-FastQC
+### 1-AdapClip
+### 3-Mapper
+### 4-Samtools
+### 5-DeDup
+`*.cleaned\_rmdup.sorted.bam` vs `*.sorted.cleaned.bam`
+### 6-QualiMap
+### 7-DnaDamage
+Within a subdirectory with the name of your `*\_rmdup.sorted.bam` you will find the output of MapDamage/DamageProfiler. 
+In that folder, a pdf fragment misincorporation plot can be found named `Fragmisincorporation_plot.pdf` if you used MapDamage, or `DamagePlot.pdf` if you used DamageProfiler.
+You can also find a file containing the deamination damage misincorporations per terminal base for each end of the fragments in:
+`3pGtoA_freq.txt` & `5pCtoT_freq.txt`. This data can be used to make your own Damage misincorporation plot, if you are so inclined.
