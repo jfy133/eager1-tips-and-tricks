@@ -53,9 +53,36 @@ The input reference file must be uncompressed (not with `.gz` at the end) and en
 
 > It is preferable, if you are going to run lots of EAGER runs in parallel (same time) rather than sequentially (one at a time), to pre-index your reference file before you set up the EAGER run. This can cause crashes if multiple EAGER runs try index the same file at the same time. You can do this by running the following three commands: `bwa index <REFERENCE>.fa`, `samtools faidx <REFERENCE>.fa` and `java -jar picard.jar CreateSequenceDictionary R=<REFERENCE>.fa O=<REFERNECE>.dict`.
 
+## CPU Cores to be used
+
+This is the maximum number of cores a module can use, if the module is multi-threaded. Multi-threaded means a particular calculation can be split up and run in parallel to speed up the process. The defaults are normally fine for this, unless you have particularly large sequencing data (e.g. a whole HiSeq lane), or very high endogenous DNA.
+
+## Memory in GB
+
+This is the maximum amount of RAM (random-access-memory) a module can use. This is where the information during calculations are stored (but not 'written to disk' like files are. The defaults are normally fine for this, unless you have particularly large sequencing data (e.g. a whole HiSeq lane), or very high endogenous DNA.
+
+## Use system tmp dir
+
+This option allows you to save temporary files in the computers `/tmp/` directory. If turned off, temporary directories are made within each EAGER module output directory. The default is fine here.
+
 ## FastQC Analysis
 
+FastQC is a tool that allows you assess the quality of the sequencing run. If you already know the sequencing run was sucessfull - i.e. if you are re-mapping your data - you can turn this off. However it is not a problem if left on as it uses very little hard-drive space (although will take longer for the EAGER run to finish).
+
 ## Adapter RM / Merging
+
+This module removes remaining adapters (i.e. the stretch of DNA that connects your DNA molecules to your indices), and if you have paired-end data, merges complementary reads from the `_R1_` and `_R2_` files. Merging increases the confidence of a particular base call if both bases in the forward and reverse reads are the same. It also removes low-quality bases from the end of reads, and removes reads if they go under a certain length.
+
+There are two options: AdapterRemoval and ClipAndMerge. AdapterRemoval is more established and has since been shown to have better performance. 
+
+Additional Options:
+  * **Forward Read Adapter** The sequence of the forward adapter that the tool uses to compare against the read, to identify if the adapter is present. The default is a common Illumina sequence.
+  * **Reverse Read Adapter** The sequence of the reverse adapter that the tool uses to compare against the read, to identify if the adapter is present. The default is a common Illumina sequence.
+  * **Minimum Base Quality** The lowest base quality (i.e. the sequencer base call confidence) allowed at the end of a read to be retained. If the base quality goes lower, these bases will be removed from the read.
+  * **Minimum Sequence Length** The minimum number of  bases a read needs to have to be retained. If the length goes under this, the read will be removed from the sequencing file.
+  * **Minimum Adapter Overlap** The minimum number of bases the read adapter must overlap by, before the overlapped bases are removed from the read.
+  * **Perform only adapter clipping** Reads are not merged and only adapter clipped. This is often only used for modern data where the insert size (i.e. DNA molecule is so long, the read pairs do not overlap.
+  * **Keep merged only** This retains only paired-end reads which successfully overlapped and were merged. Any read that lost it's pair (e.g. the pair did not read the minimum sequence length), is discarded.
 
 ## QualityFiltering
 
