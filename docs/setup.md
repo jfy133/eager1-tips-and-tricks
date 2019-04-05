@@ -86,6 +86,8 @@ Additional Options:
 
 ## QualityFiltering
 
+This performs a similar function to AdapterRemoval, but with reduced functionality. It is only needed for already AdapterRemoved and Collapsed data, e.g. from public data. You do not (actually, cannot) need to use this at the same time as AdapterRemoval. It allows you to remove reads shorter than a partcular length, and trim bases that have a lower than threshold base calling quality.
+
 ## Mapping
 
 ## Complexitiy Estimation
