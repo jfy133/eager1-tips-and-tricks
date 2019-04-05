@@ -90,6 +90,35 @@ This performs a similar function to AdapterRemoval, but with reduced functionali
 
 ## Mapping
 
+Mapping the module is where your DNA reads are compared to your Reference genome and finds the best place the read aligns or matches. There are different algorithms here, however the the most common tool in ancient DNA is `bwa` which is designed historically (and serendipitously for aDNA) for short reads and we will focus on that.
+
+A few comments on the others: 
+
+  * CircularMapper is a variant of BWA for circular genomes (such as mitochondrial or bacterial genomes), which allows reads to span across the start/end of a linear reference genome. I.e. it allows you to get even coverage across this 'join', where if you mapped purely linearly you would get a reduction in coverage because the reads either don't align enough or one or the other end of the reference is selected.
+  * BWAMem is better for longer reads in modern DNA and has extra functionality.
+  * BowTie2 is considered to be pretty equivalent to BWA and often comes down to personal preference
+  * We have no experience of Stampy
+  
+### BWA
+
+* **Readgroup** a prefix given to the name read of each read given to the BAM file containing metadata about the sequencing run. You rarely need to change this.
+* **BWA Seedlength (-l)** the length of each read used for 'seeding' when doing the fast look up of the read against the reference genome index before aligning the rest of the read. Human DNA people often turn this off (by setting e.g. 1024), but this makes run time very slow but with the benefit of getting more accurate alignment of reads.
+* **BWA Max # diff (-n)** The number of mismatches (.e.g mutations) a seed can have when looking up the best place on the reference genome. A integer (i.e. without a decimal) is the exact number of mismatches a seed can have. A 'float' (i.e. with a decimal) scales the number of mismatches to the length of the read at different 'strengths'. This can be explored using the tool hosted [here](https://apeltzer.shinyapps.io/BWAmismatches/), written by [Alex Peltzer](https://github.com/apeltzer). The `bwa` default for modern data is 0.04. Ancient DNA researchers often relax this to account for damage and historical divergence from the reference genome. 
+  * When dealing with non-UDG treated data, people of the Kircher-school set this to 0.01 (see Shapiro, B., & Hofreiter, M. (Eds.). (2012). Ancient DNA: Methods and Protocols. Humana Press. https://doi.org/10.1007/978-1-61779-516-9), whereas the Schubert school set this to 0.03 (see Schubert, M., Ginolhac, A., Lindgreen, S., Thompson, J. F., Al-Rasheid, K. A. S., Willerslev, E., … Orlando, L. (2012). Improving ancient DNA read mapping against modern reference genomes. BMC Genomics, 13, 178. https://doi.org/10.1186/1471-2164-13-178), however it doesn't make a huge amount of difference.
+  * For full-UDG treated data this value is often made more strict and increased to 0.1.
+* **BWA Qualityfilter (-q)** This will remove reads below a particular mapping quality score. 
+  * If you wish to allow reads to map to two places on the genome equally well to be kept, set this to 0. This is useful when there are large repetitive regions in your genome such humans and other eukaryotes.
+  * If you wish to have only reads that can map to a single place set this to '37' (the maximum value). This is often done in ancient pathogen and bacteria work.
+* **Filter unmapped Reads** Keeping this on will remove all unmapped reads in your final BAM file. If it is turned off those reads will be retained.
+* **Extracted Mapped/Unmapped Reads** If this is turned on, it will separate the unmapped reads from the mapped reads, and each will be stored in separate files.
+
+### CircularMapper
+
+
+  
+
+
+
 ## Complexitiy Estimation
 
 ## Remove Duplicates
