@@ -59,6 +59,6 @@ This value is expected to be lower than "DMG 1nd Base 3'", and about equal to "D
 
 **median fragment length**  The median fragment lenght of mapped reads. This value is expected to be low for ancient DNA (between 30-75bp, depending on the age and preservation of the material). Data from: MapDamage/Damageprofiler.
 
-**GC content in %** The GC content across all mapped reads. Data from Qualimap.
+**GC content in %** The GC content across all mapped reads. This value should be close to the GC proportion of your reference genome. When working with NextSeq data single-end sequenced data, values significantly higher than expected may stem from the poly-G tails the machine adds to short fragments. If you believe you suffer from this issue after looking into your fastq files, you can utilise a tool like `fastp` to correct your raw data. Data from Qualimap.
 
 ## Files
