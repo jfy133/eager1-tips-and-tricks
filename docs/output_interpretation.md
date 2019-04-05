@@ -68,10 +68,10 @@ This value is expected to be lower than "DMG 1nd Base 3'", and about equal to "D
 ### 3-Mapper
 ### 4-Samtools
 ### 5-DeDup
-`*.cleaned\_rmdup.sorted.bam` vs `*.sorted.cleaned.bam`
+`*.cleaned_rmdup.sorted.bam` vs `*.sorted.cleaned.bam`
 ### 6-QualiMap
 ### 7-DnaDamage
-Within a subdirectory with the name of your `*\_rmdup.sorted.bam` you will find the output of MapDamage/DamageProfiler. 
+Within a subdirectory with the name of your `*_rmdup.sorted.bam` you will find the output of MapDamage/DamageProfiler. 
 In that folder, a pdf fragment misincorporation plot can be found named `Fragmisincorporation_plot.pdf` if you used MapDamage, or `DamagePlot.pdf` if you used DamageProfiler.
 You can also find a file containing the deamination damage misincorporations per terminal base for each end of the fragments in:
 `3pGtoA_freq.txt` & `5pCtoT_freq.txt`. This data can be used to make your own Damage misincorporation plot, if you are so inclined.
