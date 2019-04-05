@@ -26,7 +26,7 @@ We will go through each column of this table, describing what each one means and
 
 **Cluster Factor** The number of times a read has been sequenced ___on average___ in a library. This is calculated by taking the ratio of `# mapped reads prior RMDup` to `Mapped Reads after RMDup`, and can be used as an estimate of library complexity. Cluster factors below `2` indicate the library is not yet sequenced to exhaustion. Cluster factors above `2` indicate most of the unique reads in a library have already been sequenced, so further sequencing will come at diminishing returns. Often, beyond cluster factors of `6` further sequencing is ill-advised. It should be noted that a high cluster factor in screening phase does not necessarily mean bad preservation, as it could be caused by a low-quality library (e.g. an over-amplified library). Data from: ReportTable.
 
-**Mean Coverage** The average coverage across the genome. Data from: QualiMap.
+**Mean Coverage** The average fold coverage across the genome. I.e. the number of reads covering each position on the genome on average. Data from: QualiMap.
 
 **std. dev. Coverage** The standard deviation in coverage across the genome. Small standard deviations in coverage means that reads are distributed more uniformly across the genome, while a high value points to uneven distribution of reads across the genome. Data from: QualiMap.
 
@@ -40,23 +40,24 @@ We will go through each column of this table, describing what each one means and
 
 **Coverage >= 5X in %** What proportion of the genome is covered by at least 5 reads. Data from: QualiMap.
 
-**# of reads on mitochondrium** The number of reads that map to the mitochondrial chromosome. Data from: QualiMap.
+**# of reads on mitochondrium** The number of reads that map to the fasta entry you selected in the "Select Reference" menu. Typically this refers to the mitochondrial chromosome, hence the column name. Data from: QualiMap.
 
-**AVG Coverage on mitochondrium** The average coverage on the mitochondrial chromosome. This is expected to be higher than the mean coverage on the autosomes, since there are many more copies of the mitochondrial DNA than the nuclear DNA. Data from: MtNucRatio.
+**AVG Coverage on mitochondrium** The average fold coverage on the mitochondrial chromosome, or other fasta entry selected in the "Select Reference" menu. When this is the mitochondrial chromosome, this number is expected to be higher than the mean coverage on the autosomes, since there are many more copies of the mitochondrial DNA than the nuclear DNA. Data from: MtNucRatio.
 
 **MT/NUC Ratio** The ratio of `AVG Coverage on mitochondrium` to `Mean Coverage`. Data from: MtNucRatio.
 
-**DMG 1st Base 3'** The proportion of reads that contain a C->T transition in the first base on the 3' terminus of the read. Data from: MapDamage/Damageprofiler.
+**DMG 1st Base 3'** The proportion of reads that contain a C->T transition in the first base on the 3' terminus of the read.This value is expected to be higher than "DMG 2nd Base 3'", and about equal to "DMG 1nd Base 5'" for double stranded libraries. It is recommended to look at the fragment misincorporation plots to **ensure** the presence of a smooth "smiley" for non-UDG-treated libraries, or the lack of damage after the third 3' and 5' bases in the case of UDG-half-treated libraries. Data from: MapDamage/Damageprofiler. 
 
-**DMG 2nd Base 3'** The proportion of reads that contain a C->T transition in the second base on the 3' terminus of the read. Data from: MapDamage/Damageprofiler.
+**DMG 2nd Base 3'** The proportion of reads that contain a C->T transition in the second base on the 3' terminus of the read.
+This value is expected to be lower than "DMG 1nd Base 3'", and about equal to "DMG 2nd Base 5'" for double stranded libraries. It is recommended to look at the fragment misincorporation plots to **ensure** the presence of a smooth "smiley" for non-UDG-treated libraries, or the lack of damage after the third 3' and 5' bases in the case of UDG-half-treated libraries. Data from: MapDamage/Damageprofiler. 
 
-**DMG 1st Base 5'** The proportion of reads that contain a G->A transition in the first base on the 5' terminus of the read. Data from: MapDamage/Damageprofiler.
+**DMG 1st Base 5'** The proportion of reads that contain a G->A transition in the first base on the 5' terminus of the read. This value is expected to be higher than "DMG 2nd Base 5'", and about equal to "DMG 1nd Base 3'" for double stranded libraries. It is recommended to look at the fragment misincorporation plots to **ensure** the presence of a smooth "smiley" for non-UDG-treated libraries, or the lack of damage after the third 3' and 5' bases in the case of UDG-half-treated libraries. Data from: MapDamage/Damageprofiler. 
 
-**DMG 2nd Base 5'** The proportion of reads that contain a G->A transition in the second base on the 5' terminus of the read. Data from: MapDamage/Damageprofiler.
+**DMG 2nd Base 5'** The proportion of reads that contain a G->A transition in the second base on the 5' terminus of the read. This value is expected to be higher than "DMG 1nd Base 5'", and about equal to "DMG 2nd Base 3'" for double stranded libraries. It is recommended to look at the fragment misincorporation plots to **ensure** the presence of a smooth "smiley" for non-UDG-treated libraries, or the lack of damage after the third 3' and 5' bases in the case of UDG-half-treated libraries. Data from: MapDamage/Damageprofiler. 
 
-**average fragment length**  The mean fragment length of mapped reads. Data from: MapDamage/Damageprofiler.
+**average fragment length**  The mean fragment length of mapped reads. This value is expected to be low for ancient DNA (between 30-75bp, depending on the age and preservation of the material). Data from: MapDamage/Damageprofiler.
 
-**median fragment length**  The median fragment lenght of mapped reads. Data from: MapDamage/Damageprofiler.
+**median fragment length**  The median fragment lenght of mapped reads. This value is expected to be low for ancient DNA (between 30-75bp, depending on the age and preservation of the material). Data from: MapDamage/Damageprofiler.
 
 **GC content in %** The GC content across all mapped reads. Data from Qualimap.
 
