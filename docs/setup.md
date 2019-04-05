@@ -52,3 +52,31 @@ The input reference file must be uncompressed (not with `.gz` at the end) and en
   * If you do not have HG19 or GrCH37 human reference fastas, you need to put the first word of the header (i.e. until the first space and without the `>`) in the field. The GI numbers that window information refers to are deprecated IDs from NCBI and may not be in your `<REFERENCE>.fasta` file. 
 
 > It is preferable, if you are going to run lots of EAGER runs in parallel (same time) rather than sequentially (one at a time), to pre-index your reference file before you set up the EAGER run. This can cause crashes if multiple EAGER runs try index the same file at the same time. You can do this by running the following three commands: `bwa index <REFERENCE>.fa`, `samtools faidx <REFERENCE>.fa` and `java -jar picard.jar CreateSequenceDictionary R=<REFERENCE>.fa O=<REFERNECE>.dict`.
+
+## FastQC Analysis
+
+## Adapter RM / Merging
+
+## QualityFiltering
+
+## Mapping
+
+## Complexitiy Estimation
+
+## Remove Duplicates
+
+## PMDtools
+
+## Contamination Estimation
+
+## Damage Calculation
+
+## SNP Calling
+
+## SNP Filtering
+
+## VCF2Genome
+
+## Clean Up
+
+## Create Report?
