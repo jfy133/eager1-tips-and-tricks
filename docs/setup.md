@@ -187,6 +187,6 @@ You can use this information to check you've successfully updated the correspond
  
  With this you can double check you've not accidently changed something you didn't plan to.
  
- **Important** In certain cases, the `VCF2Genome` module will for some reason turn itself on after generating the first run. Subsequent runs will then try running that module and may crash. Always double check both the module hasn't turned on in the GUI window, and that it is not turned on in the config `.xml` file. Check in the [debugging page](docs/debugging.md) how to fix a config file
+ **Important** In certain cases, the `VCF2Genome` module will for some reason turn itself on after generating the first run. Subsequent runs will then try running that module and may crash. Always double check both the module hasn't turned on in the GUI window, and that it is not turned on in the config `.xml` file. Check in the [debugging page](debugging.md) how to fix a config file
  
 
